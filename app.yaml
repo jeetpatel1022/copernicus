@@ -1,0 +1,28 @@
+application: crafty-sound-748
+version: 1
+runtime: python27
+threadsafe: true
+api_version: 1
+
+handlers:
+- url: /_ah/spi/.*
+  script: main.application
+
+- url: /js
+  static_dir: templates/js
+- url: /css
+  static_dir: templates/css
+- url: /images
+  static_dir: templates/images
+- url: /
+  static_files: templates/index.html
+  upload: templates/index\.html
+libraries:
+# You must include the Endpoints library if you wish to serve an API.
+- name: endpoints
+  version: 1.0
+
+# The pycrypto library is used for OAuth 2, and is also a requirement for
+# APIs that wish to authenticate users.
+- name: pycrypto
+  version: latest
